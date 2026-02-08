@@ -9,7 +9,11 @@ import {
   Facebook, 
   Youtube,
   Clock,
-  Heart
+  Heart,
+  Github,
+  Linkedin,
+  Globe,
+  Code2
 } from 'lucide-react'
 import { BUSINESS_INFO, FOOTER_LINKS, STATS } from '@/lib/constants'
 import { Input } from '@/components/ui'
@@ -229,6 +233,69 @@ export function Footer() {
               Terms of Service
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Developer Credit */}
+      <div className="border-t border-white/10 bg-primary-dark/50">
+        <div className="container-custom py-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
+            <div className="flex items-center gap-2 text-white/70">
+              <Code2 className="w-4 h-4 text-accent" />
+              <span>Website developed by</span>
+              <a 
+                href="https://portfolio-website-qt9y.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-white font-semibold transition-colors"
+              >
+                Bhavesh Solanki
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://portfolio-website-qt9y.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
+                aria-label="Portfolio"
+                title="Portfolio"
+              >
+                <Globe className="w-4 h-4" />
+              </a>
+              <a
+                href="https://github.com/BhaveshSolanki2611"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/bhavesh-solanki-475628248"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0077b5] transition-colors"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+          <p className="text-center text-xs text-white/50 mt-3">
+            Want to build your own full-fledged web application? 
+            <a 
+              href="https://portfolio-website-qt9y.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-accent hover:text-white ml-1 transition-colors"
+            >
+              Contact me for hiring or collaboration
+            </a>
+          </p>
         </div>
       </div>
     </footer>
