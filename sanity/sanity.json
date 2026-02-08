@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/sanity.json",
+  "root": true,
+  "project": {
+    "name": "SP Digital Studio"
+  },
+  "api": {
+    "projectId": "",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/vision"
+  ],
+  "env": {
+    ".env": {},
+    ".env.development": {}
+  },
+  "parts": []
+}
