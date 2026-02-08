@@ -236,66 +236,79 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Developer Credit */}
-      <div className="border-t border-white/10 bg-primary-dark/50">
-        <div className="container-custom py-4">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
-            <div className="flex items-center gap-2 text-white/70">
-              <Code2 className="w-4 h-4 text-accent" />
-              <span>Website developed by</span>
-              <a 
-                href="https://portfolio-website-qt9y.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-white font-semibold transition-colors"
-              >
-                Bhavesh Solanki
-              </a>
+      {/* Developer Credit - Highlighted */}
+      <div className="border-t-2 border-accent/30 bg-gradient-to-r from-primary via-primary-dark to-primary">
+        <div className="container-custom py-6">
+          <div className="bg-gradient-to-r from-accent/10 via-secondary/10 to-accent/10 rounded-xl p-5 border border-accent/20 shadow-lg shadow-accent/5">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-5">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center shadow-lg">
+                  <Code2 className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-center md:text-left">
+                  <span className="text-white/80 text-sm">Website Developed by</span>
+                  <a 
+                    href="https://portfolio-website-qt9y.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-lg font-bold bg-gradient-to-r from-accent via-yellow-400 to-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+                  >
+                    Bhavesh Solanki
+                  </a>
+                </div>
+              </div>
+              
+              <div className="h-8 w-px bg-white/20 hidden md:block" />
+              
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://portfolio-website-qt9y.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-accent transition-all duration-300 hover:scale-105"
+                  title="View Portfolio"
+                >
+                  <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                  <span className="text-sm font-medium">Portfolio</span>
+                </a>
+                <a
+                  href="https://github.com/BhaveshSolanki2611"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#333] transition-all duration-300 hover:scale-110"
+                  aria-label="GitHub"
+                  title="GitHub"
+                >
+                  <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/bhavesh-solanki-475628248"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0077b5] transition-all duration-300 hover:scale-110"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                </a>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://portfolio-website-qt9y.vercel.app/"
-                target="_blank"
+            
+            <div className="mt-4 pt-4 border-t border-white/10 text-center">
+              <p className="text-sm text-white/70">
+                Need a <span className="text-accent font-semibold">full-stack web application</span> for your business?
+              </p>
+              <a 
+                href="https://portfolio-website-qt9y.vercel.app/" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
-                aria-label="Portfolio"
-                title="Portfolio"
+                className="inline-flex items-center gap-2 mt-2 px-6 py-2 bg-gradient-to-r from-accent to-secondary text-white font-semibold rounded-full hover:shadow-lg hover:shadow-accent/30 transition-all duration-300 hover:scale-105"
               >
-                <Globe className="w-4 h-4" />
-              </a>
-              <a
-                href="https://github.com/BhaveshSolanki2611"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
-                aria-label="GitHub"
-                title="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/bhavesh-solanki-475628248"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0077b5] transition-colors"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
+                Hire Me / Collaborate
               </a>
             </div>
           </div>
-          <p className="text-center text-xs text-white/50 mt-3">
-            Want to build your own full-fledged web application? 
-            <a 
-              href="https://portfolio-website-qt9y.vercel.app/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-accent hover:text-white ml-1 transition-colors"
-            >
-              Contact me for hiring or collaboration
-            </a>
-          </p>
         </div>
       </div>
     </footer>
