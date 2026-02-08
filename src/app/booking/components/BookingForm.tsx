@@ -45,10 +45,35 @@ export function BookingForm() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service_type: formData.service,
+          event_date: formData.eventDate,
+          event_end_date: formData.eventEndDate || null,
+          location: formData.location || null,
+          budget: formData.budget || null,
+          notes: formData.notes || null,
+        }),
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit booking')
+      }
+      
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Booking error:', error)
+      alert('Failed to submit booking. Please try again or call us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const canProceed = () => {

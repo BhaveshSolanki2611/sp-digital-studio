@@ -7,19 +7,29 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service, eventDate, eventEndDate, location, budget, notes } = body
+    const { 
+      name, 
+      email, 
+      phone, 
+      service_type: service, 
+      event_date: eventDate, 
+      event_end_date: eventEndDate, 
+      location, 
+      budget, 
+      notes 
+    } = body
 
     // Validate required fields
     if (!name || !email || !phone || !service || !eventDate) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: name, email, phone, service_type, and event_date are required' },
         { status: 400 }
       )
     }
 
     // Send confirmation email to customer
     await resend.emails.send({
-      from: 'SP Digital Studio <noreply@spdigitalstudio.com>',
+      from: 'SP Digital Studio <noreply@resend.dev>',
       to: email,
       subject: `Booking Request Received - ${BUSINESS_INFO.name}`,
       html: `
@@ -60,7 +70,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to business
     await resend.emails.send({
-      from: 'SP Digital Studio <noreply@spdigitalstudio.com>',
+      from: 'SP Digital Studio <noreply@resend.dev>',
       to: BUSINESS_INFO.emails[0],
       subject: `New Booking Request: ${service} - ${name}`,
       html: `

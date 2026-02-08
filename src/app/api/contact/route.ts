@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to business
     await resend.emails.send({
-      from: 'SP Digital Studio <noreply@spdigitalstudio.com>',
+      from: 'SP Digital Studio <noreply@resend.dev>',
       to: BUSINESS_INFO.emails[0],
       subject: `Contact Form: ${subject || 'General Inquiry'} - ${name}`,
       html: `
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to customer
     await resend.emails.send({
-      from: 'SP Digital Studio <noreply@spdigitalstudio.com>',
+      from: 'SP Digital Studio <noreply@resend.dev>',
       to: email,
       subject: `Message Received - ${BUSINESS_INFO.name}`,
       html: `
