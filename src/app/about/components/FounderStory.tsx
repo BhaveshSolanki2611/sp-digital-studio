@@ -19,8 +19,8 @@ export function FounderStory() {
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80"
-                alt="SP Digital Studio"
+                src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770524949/WhatsApp_Image_2026-02-08_at_9.51.36_AM_qu0osj.jpg"
+                alt="Satpal Solanki - Founder of SP Digital Studio"
                 fill
                 className="object-cover"
               />

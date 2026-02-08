@@ -282,5 +282,5 @@ export const SEO = {
   title: 'SP Digital Studio & Color Lab — Photography & Video, Najafgarh, New Delhi',
   description: 'SP Digital Studio & Color Lab — Professional photography & videography since 1996. Weddings, events, product shoots, instant prints, photo restoration & more. Call +91 99106 43200.',
   keywords: 'photography studio najafgarh, wedding photographer delhi, photo studio new delhi, video editing, photo restoration, instant prints, passport photos, pre-wedding shoot',
-  ogImage: '/images/og-image.jpg',
+  ogImage: 'https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png',
 } as const

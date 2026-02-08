@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
@@ -77,16 +78,21 @@ export function Header() {
         )}
       >
         <div className="container-custom flex items-center justify-between">
-          {/* Logo */}
+{/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center text-white font-bold text-lg">
-              SP
+            <div className="w-12 h-12 rounded-full overflow-hidden relative">
+              <Image
+                src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png"
+                alt="SP Digital Studio Logo"
+                fill
+                className="object-cover"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="font-bold text-primary text-lg leading-tight group-hover:text-accent transition-colors">
                 SP Digital Studio
               </h1>
-              <p className="text-xs text-muted">& Color Lab</p>
+              <p className="text-xs text-muted">&amp; Color Lab</p>
             </div>
           </Link>
 
@@ -208,15 +214,20 @@ export function Header() {
               className="fixed right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white z-50 lg:hidden overflow-y-auto"
             >
               <div className="p-6">
-                {/* Header */}
+{/* Header */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center text-white font-bold">
-                      SP
+                    <div className="w-10 h-10 rounded-full overflow-hidden relative">
+                      <Image
+                        src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png"
+                        alt="SP Digital Studio Logo"
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <div>
                       <h2 className="font-bold text-primary">SP Digital Studio</h2>
-                      <p className="text-xs text-muted">& Color Lab</p>
+                      <p className="text-xs text-muted">&amp; Color Lab</p>
                     </div>
                   </div>
                   <button

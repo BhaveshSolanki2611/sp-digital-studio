@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   Phone, 
   Mail, 
@@ -27,15 +28,20 @@ export function Footer() {
       {/* Main Footer */}
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Column */}
+{/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center text-white font-bold text-lg">
-                SP
+              <div className="w-12 h-12 rounded-full overflow-hidden relative">
+                <Image
+                  src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png"
+                  alt="SP Digital Studio Logo"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h2 className="font-bold text-lg">SP Digital Studio</h2>
-                <p className="text-sm text-white/60">& Color Lab</p>
+                <p className="text-sm text-white/60">&amp; Color Lab</p>
               </div>
             </Link>
             <p className="text-white/70 text-sm mb-6 leading-relaxed">
