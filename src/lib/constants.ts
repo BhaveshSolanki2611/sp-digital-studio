@@ -53,7 +53,7 @@ export const SERVICES = [
     title: 'Wedding Photography',
     icon: 'Heart',
     shortDesc: 'Complete wedding coverage with premium packages',
-    startingPrice: 18000,
+    startingPrice: 25000,
   },
   {
     id: 'pre-wedding',
@@ -67,7 +67,7 @@ export const SERVICES = [
     title: 'Destination Wedding',
     icon: 'Plane',
     shortDesc: 'Travel with us for your dream destination wedding',
-    startingPrice: 55000,
+    startingPrice: 75000,
   },
   {
     id: 'bridal',
@@ -165,7 +165,7 @@ export const WEDDING_PACKAGES = [
     id: 'basic',
     name: 'Basic Package',
     description: 'Perfect for single-day small programs',
-    price: { min: 18000, max: 20000 },
+    price: { min: 25000, max: 30000 },
     includes: [
       '1 Professional Photographer',
       '1 Professional Videographer',
@@ -179,7 +179,7 @@ export const WEDDING_PACKAGES = [
     id: 'premium',
     name: 'Premium Package',
     description: 'Complete coverage with added features',
-    price: { min: 35000, max: 45000 },
+    price: { min: 40000, max: 50000 },
     includes: [
       'Everything in Basic',
       '2x LED Screens (52")',
@@ -194,7 +194,7 @@ export const WEDDING_PACKAGES = [
     id: 'destination',
     name: 'Destination Wedding',
     description: 'Travel with us anywhere in India',
-    price: { min: 55000, max: 100000 },
+    price: { min: 75000, max: 150000 },
     includes: [
       'Full Team Travel',
       'Multi-Day Coverage',
@@ -205,6 +205,37 @@ export const WEDDING_PACKAGES = [
     ],
     perDay: true,
   },
+] as const
+
+// Photo Print Sizes and Pricing
+export const PHOTO_PRINTS = [
+  { size: '4x6 inches', price: 15 },
+  { size: '5x7 inches', price: 60 },
+  { size: '6x8 inches', price: 70 },
+  { size: '8x10 inches', price: 180 },
+  { size: '8x12 inches', price: 220 },
+  { size: '10x12 inches', price: 300 },
+  { size: '12x18 inches', price: 380 },
+] as const
+
+// Bulk Discount Tiers
+export const PRINT_BULK_DISCOUNTS = [
+  { minQty: 10, discount: 10, label: '10+ photos: 10% off' },
+  { minQty: 25, discount: 15, label: '25+ photos: 15% off' },
+  { minQty: 50, discount: 20, label: '50+ photos: 20% off' },
+  { minQty: 100, discount: 25, label: '100+ photos: 25% off' },
+] as const
+
+// Passport & ID Photo Pricing
+export const PASSPORT_PHOTOS = [
+  { type: 'Passport Size (Indian)', size: '35mm x 45mm', price: 100, quantity: 8 },
+  { type: 'Passport Size (US/UK)', size: '51mm x 51mm', price: 200, quantity: 8 },
+  { type: 'Visa Size (Schengen)', size: '35mm x 45mm', price: 150, quantity: 8 },
+  { type: 'OCI/PIO Card', size: '51mm x 51mm', price: 220, quantity: 8 },
+  { type: 'Aadhar Card', size: '35mm x 45mm', price: 90, quantity: 8 },
+  { type: 'PAN Card', size: '25mm x 35mm', price: 100, quantity: 8 },
+  { type: 'Driving License', size: '35mm x 45mm', price: 100, quantity: 8 },
+  { type: 'College/School ID', size: 'Standard', price: 100, quantity: 8 },
 ] as const
 
 // Product Categories for Shop

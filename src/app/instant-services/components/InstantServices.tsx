@@ -1,30 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FileCheck, Globe, CreditCard, Camera, Printer, Clock } from 'lucide-react'
+import { FileCheck, Globe, CreditCard, Camera, Printer, Clock, Tag } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
-
-const photoSizes = [
-  { name: 'Passport Size (Indian)', dimensions: '35mm x 45mm', price: 50, perSet: '4 photos' },
-  { name: 'Passport Size (US/UK)', dimensions: '51mm x 51mm', price: 80, perSet: '4 photos' },
-  { name: 'Visa Size (Schengen)', dimensions: '35mm x 45mm', price: 80, perSet: '4 photos' },
-  { name: 'OCI/PIO Card', dimensions: '51mm x 51mm', price: 100, perSet: '4 photos' },
-  { name: 'Aadhar Card', dimensions: '35mm x 45mm', price: 50, perSet: '4 photos' },
-  { name: 'PAN Card', dimensions: '25mm x 35mm', price: 50, perSet: '4 photos' },
-  { name: 'Driving License', dimensions: '35mm x 45mm', price: 50, perSet: '4 photos' },
-  { name: 'College/School ID', dimensions: 'Standard', price: 50, perSet: '4 photos' },
-]
-
-const printSizes = [
-  { name: '4x6 inches', price: 15 },
-  { name: '5x7 inches', price: 25 },
-  { name: '6x8 inches', price: 35 },
-  { name: '8x10 inches', price: 50 },
-  { name: '8x12 inches', price: 60 },
-  { name: '10x12 inches', price: 80 },
-  { name: '12x18 inches', price: 150 },
-  { name: 'A4 Size', price: 100 },
-]
+import { PASSPORT_PHOTOS, PHOTO_PRINTS, PRINT_BULK_DISCOUNTS } from '@/lib/constants'
 
 const features = [
   { icon: Clock, title: '5-Minute Service', description: 'Quick turnaround for all instant services' },
@@ -78,13 +57,13 @@ export function InstantServices() {
                   </tr>
                 </thead>
                 <tbody>
-                  {photoSizes.map((photo, index) => (
-                    <tr key={photo.name} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="p-4 text-sm font-medium">{photo.name}</td>
-                      <td className="p-4 text-sm text-muted">{photo.dimensions}</td>
+                  {PASSPORT_PHOTOS.map((photo, index) => (
+                    <tr key={photo.type} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="p-4 text-sm font-medium">{photo.type}</td>
+                      <td className="p-4 text-sm text-muted">{photo.size}</td>
                       <td className="p-4 text-sm text-right">
                         <span className="font-bold text-accent">{formatPrice(photo.price)}</span>
-                        <span className="text-xs text-muted block">{photo.perSet}</span>
+                        <span className="text-xs text-muted block">{photo.quantity} photos</span>
                       </td>
                     </tr>
                   ))}
@@ -112,9 +91,9 @@ export function InstantServices() {
                   </tr>
                 </thead>
                 <tbody>
-                  {printSizes.map((print, index) => (
-                    <tr key={print.name} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="p-4 text-sm font-medium">{print.name}</td>
+                  {PHOTO_PRINTS.map((print, index) => (
+                    <tr key={print.size} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="p-4 text-sm font-medium">{print.size}</td>
                       <td className="p-4 text-sm text-right font-bold text-accent">
                         {formatPrice(print.price)}
                       </td>
@@ -123,10 +102,24 @@ export function InstantServices() {
                 </tbody>
               </table>
             </div>
-            <p className="text-sm text-muted mt-4">
-              * Prices for glossy finish. Matte finish available at slightly higher rates.
-              Bulk orders get discounts.
-            </p>
+            
+            {/* Bulk Discount Notice */}
+            <div className="mt-6 bg-green-50 border border-green-200 rounded-xl p-4">
+              <h4 className="font-semibold text-green-800 flex items-center gap-2 mb-3">
+                <Tag className="w-5 h-5" />
+                Bulk Order Discounts
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                {PRINT_BULK_DISCOUNTS.map((tier) => (
+                  <div key={tier.minQty} className="text-sm text-green-700 bg-white rounded-lg px-3 py-2">
+                    <span className="font-medium">{tier.minQty}+ photos:</span> {tier.discount}% off
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-green-600 mt-3">
+                * Discounts apply automatically for bulk orders. Contact us for custom quotes on large orders.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
