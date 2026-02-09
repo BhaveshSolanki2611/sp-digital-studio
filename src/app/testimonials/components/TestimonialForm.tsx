@@ -17,16 +17,32 @@ export function TestimonialForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
     
-    // Simulate submission - will be replaced with actual API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const response = await fetch('/api/testimonials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      
+      const result = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit review')
+      }
+      
+      setIsSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit review. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
   
   if (isSubmitted) {
@@ -47,6 +63,12 @@ export function TestimonialForm() {
   
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
+      
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -80,7 +102,7 @@ export function TestimonialForm() {
         <select
           value={formData.service}
           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-maroon focus:ring-2 focus:ring-brand-maroon/20 outline-none"
+          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none"
         >
           <option value="">Select a service</option>
           <option value="Wedding Photography">Wedding Photography</option>
@@ -107,9 +129,9 @@ export function TestimonialForm() {
               className="p-1 hover:scale-110 transition-transform"
             >
               <Star
-                className={`h-8 w-8 ${
+                className={`h-8 w-8 transition-colors ${
                   star <= formData.rating
-                    ? 'text-brand-gold fill-brand-gold'
+                    ? 'text-yellow-400 fill-yellow-400'
                     : 'text-gray-300'
                 }`}
               />

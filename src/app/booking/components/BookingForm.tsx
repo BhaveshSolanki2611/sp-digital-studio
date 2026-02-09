@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Loader2, Upload, Check, ChevronRight, ChevronLeft } from 'lucide-react'
+import { Send, Loader2, Upload, Check, ChevronRight, ChevronLeft, X, File } from 'lucide-react'
 import { Button, Input, Textarea } from '@/components/ui'
 import { SERVICES } from '@/lib/constants'
 
@@ -38,9 +38,36 @@ export function BookingForm() {
     phone: '',
     files: [] as File[],
   })
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const updateForm = (field: string, value: string | File[]) => {
     setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(e.target.files || [])
+    const validFiles = selectedFiles.filter(file => {
+      const isValidType = ['image/png', 'image/jpeg', 'image/jpg', 'application/pdf'].includes(file.type)
+      const isValidSize = file.size <= 10 * 1024 * 1024 // 10MB
+      return isValidType && isValidSize
+    })
+    updateForm('files', [...formData.files, ...validFiles].slice(0, 5)) // Max 5 files
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    const droppedFiles = Array.from(e.dataTransfer.files)
+    const validFiles = droppedFiles.filter(file => {
+      const isValidType = ['image/png', 'image/jpeg', 'image/jpg', 'application/pdf'].includes(file.type)
+      const isValidSize = file.size <= 10 * 1024 * 1024 // 10MB
+      return isValidType && isValidSize
+    })
+    updateForm('files', [...formData.files, ...validFiles].slice(0, 5)) // Max 5 files
+  }
+
+  const removeFile = (index: number) => {
+    const newFiles = formData.files.filter((_, i) => i !== index)
+    updateForm('files', newFiles)
   }
 
   const handleSubmit = async () => {
@@ -267,15 +294,53 @@ export function BookingForm() {
               <label className="mb-1.5 block text-sm font-medium text-foreground">
                 Reference Images / Moodboard (optional)
               </label>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-gray-300 transition-colors">
+              <div 
+                className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-accent transition-colors cursor-pointer"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept=".png,.jpg,.jpeg,.pdf"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
                 <Upload className="w-8 h-8 text-muted mx-auto mb-2" />
                 <p className="text-sm text-muted">
                   Drag & drop files here or click to browse
                 </p>
                 <p className="text-xs text-muted mt-1">
-                  PNG, JPG, PDF up to 10MB each
+                  PNG, JPG, PDF up to 10MB each (max 5 files)
                 </p>
               </div>
+              
+              {/* Selected Files List */}
+              {formData.files.length > 0 && (
+                <div className="mt-3 space-y-2">
+                  {formData.files.map((file, index) => (
+                    <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2">
+                        <File className="w-4 h-4 text-accent" />
+                        <span className="text-sm text-foreground truncate max-w-[200px]">{file.name}</span>
+                        <span className="text-xs text-muted">({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          removeFile(index)
+                        }}
+                        className="p-1 hover:bg-gray-200 rounded"
+                      >
+                        <X className="w-4 h-4 text-muted" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         )}
