@@ -208,23 +208,15 @@ export function ServicesList() {
                 <p className="text-muted text-sm mb-4">{service.shortDesc}</p>
                 
                 <div className="flex items-end justify-between">
-                  <div>
-                    <p className="text-xs text-muted">Starting from</p>
-                    <p className="text-xl font-bold text-accent">
-                      {formatPrice(service.startingPrice)}
-                      {service.priceNote && (
-                        <span className="text-xs text-muted font-normal ml-1">
-                          {service.priceNote}
-                        </span>
-                      )}
-                    </p>
-                  </div>
                   <Button 
                     size="sm" 
                     variant="outline"
                     onClick={() => setSelectedService(service)}
                   >
-                    Details
+                    View Details
+                  </Button>
+                  <Button size="sm" asChild>
+                    <Link href="/booking">Book Now</Link>
                   </Button>
                 </div>
               </div>
@@ -297,36 +289,20 @@ export function ServicesList() {
                       </ul>
                     </div>
 
-                    {/* Turnaround & Pricing */}
-                    <div className="flex flex-wrap gap-6 mb-6">
-                      <div>
-                        <p className="text-xs text-muted uppercase">Turnaround</p>
-                        <p className="font-semibold">{selectedService.turnaround}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted uppercase">Starting Price</p>
-                        <p className="text-xl font-bold text-accent">
-                          {formatPrice(selectedService.startingPrice)}
-                          {selectedService.priceNote && (
-                            <span className="text-xs text-muted font-normal ml-1">
-                              {selectedService.priceNote}
-                            </span>
-                          )}
-                        </p>
-                      </div>
+                    {/* Turnaround */}
+                    <div className="mb-6">
+                      <p className="text-xs text-muted uppercase">Turnaround</p>
+                      <p className="font-semibold">{selectedService.turnaround}</p>
                     </div>
 
-                    {/* Packages (if available) */}
+                    {/* Packages (if available) - show features only */}
                     {selectedService.packages && (
                       <div className="mb-6">
-                        <h4 className="font-semibold text-foreground mb-3">Packages</h4>
+                        <h4 className="font-semibold text-foreground mb-3">Available Packages</h4>
                         <div className="grid gap-4">
                           {selectedService.packages.map((pkg) => (
                             <div key={pkg.name} className="p-4 rounded-xl bg-gray-50">
-                              <div className="flex justify-between items-start mb-2">
-                                <h5 className="font-semibold">{pkg.name}</h5>
-                                <span className="text-accent font-bold">{pkg.price}</span>
-                              </div>
+                              <h5 className="font-semibold mb-2">{pkg.name}</h5>
                               <ul className="flex flex-wrap gap-2">
                                 {pkg.includes.map((item) => (
                                   <li key={item} className="text-xs bg-white px-2 py-1 rounded">

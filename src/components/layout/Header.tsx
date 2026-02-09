@@ -82,7 +82,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full overflow-hidden relative">
               <Image
-                src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png"
+                src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521630/new_tab_logo_sp_lagrhh.png"
                 alt="SP Digital Studio Logo"
                 fill
                 className="object-cover"
@@ -219,7 +219,7 @@ export function Header() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full overflow-hidden relative">
                       <Image
-                        src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521189/ChatGPT_Image_Feb_8_2026_08_55_34_AM_xedgbx.png"
+                        src="https://res.cloudinary.com/dgqrgff7r/image/upload/v1770521630/new_tab_logo_sp_lagrhh.png"
                         alt="SP Digital Studio Logo"
                         fill
                         className="object-cover"

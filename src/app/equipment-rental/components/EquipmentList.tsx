@@ -49,7 +49,7 @@ const equipment = [
     name: '360 Selfie Booth',
     description: 'Interactive slow-motion video booth with instant sharing.',
     dailyRate: 10000,
-    image: 'https://res.cloudinary.com/dgqrgff7r/image/upload/v1770523341/ChatGPT_Image_Feb_8_2026_09_25_13_AM_ycgzri.png',
+    image: 'https://res.cloudinary.com/dgqrgff7r/image/upload/v1770525821/ChatGPT_Image_Feb_8_2026_09_25_13_AM_ycgzri.png',
     icon: RotateCcw,
     features: ['360° rotating camera', 'Instant social sharing', 'On-site printing available', 'Props included'],
   },

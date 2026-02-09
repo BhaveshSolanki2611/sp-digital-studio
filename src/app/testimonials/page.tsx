@@ -13,7 +13,7 @@ export default function TestimonialsPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-brand-maroon to-brand-maroon/90 text-white py-20">
+      <section className="bg-gradient-to-br from-primary to-primary/90 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -27,21 +27,21 @@ export default function TestimonialsPage() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex items-center justify-center gap-1 text-brand-gold mb-1">
+                <div className="flex items-center justify-center gap-1 text-accent mb-1">
                   <Star className="h-5 w-5 fill-current" />
                   <span className="text-2xl font-bold">4.9</span>
                 </div>
                 <p className="text-sm text-white/70">Average Rating</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex items-center justify-center gap-1 text-brand-gold mb-1">
+                <div className="flex items-center justify-center gap-1 text-accent mb-1">
                   <Users className="h-5 w-5" />
                   <span className="text-2xl font-bold">{STATS.happyClients.toLocaleString()}+</span>
                 </div>
                 <p className="text-sm text-white/70">Happy Clients</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex items-center justify-center gap-1 text-brand-gold mb-1">
+                <div className="flex items-center justify-center gap-1 text-accent mb-1">
                   <span className="text-2xl font-bold">{STATS.yearsInBusiness}+</span>
                 </div>
                 <p className="text-sm text-white/70">Years Experience</p>
@@ -77,7 +77,7 @@ export default function TestimonialsPage() {
       </section>
       
       {/* Google Reviews CTA */}
-      <section className="py-12 bg-brand-cream">
+      <section className="py-12 bg-gray-100">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-600 mb-4">
             You can also leave us a review on Google to help others find us!
