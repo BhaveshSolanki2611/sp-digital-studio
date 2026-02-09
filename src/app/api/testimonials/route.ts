@@ -12,7 +12,7 @@ export async function GET() {
     const { data, error } = await supabase
       .from('testimonials')
       .select('*')
-      .eq('is_approved', true)
+      .eq('approved', true)
       .order('created_at', { ascending: false })
 
     if (error) throw error
@@ -46,18 +46,21 @@ export async function POST(request: NextRequest) {
       .from('testimonials')
       .insert([
         {
-          client_name: name,
+          name: name,
           email: email,
-          service_type: service || null,
+          service: service || null,
           rating: rating,
           text: text,
-          is_approved: false, // Requires admin approval
-          is_featured: false,
+          approved: false, // Requires admin approval
+          featured: false,
         }
       ])
       .select()
 
-    if (error) throw error
+    if (error) {
+      console.error('Database error:', error)
+      throw error
+    }
 
     return NextResponse.json({ 
       success: true, 
@@ -67,7 +70,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error submitting testimonial:', error)
     return NextResponse.json(
-      { error: 'Failed to submit testimonial' },
+      { error: 'Failed to submit testimonial. Please try again.' },
       { status: 500 }
     )
   }

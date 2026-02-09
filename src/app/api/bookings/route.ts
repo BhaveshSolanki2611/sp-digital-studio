@@ -37,14 +37,14 @@ export async function POST(request: NextRequest) {
       .from('bookings')
       .insert([
         {
-          customer_name: name,
+          name: name,
           email: email,
           phone: phone,
           service_type: service,
           event_date: eventDate,
           event_end_date: eventEndDate || null,
           location: location || null,
-          budget_range: budget || null,
+          budget: budget || null,
           notes: notes || null,
           status: 'pending',
         }
